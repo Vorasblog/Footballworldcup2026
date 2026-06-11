@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hlavní česká zbraň: standardní situace – MS 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #f5f0e8;
+            font-family: 'Source Serif 4', Georgia, serif;
+            color: #1a1a1a;
+            line-height: 1.75;
+        }
+
+        .top-bar {
+            background: #0A1628;
+            color: #F5A623;
+            text-align: center;
+            padding: 8px 20px;
+            font-size: 0.78rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        header {
+            background: #0A1628;
+            padding: 28px 20px 24px;
+            text-align: center;
+            border-bottom: 4px solid #C8102E;
+        }
+
+        .site-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #F5A623;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .site-tagline {
+            color: #B0BEC5;
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+        }
+
+        .category-bar {
+            background: #C8102E;
+            text-align: center;
+            padding: 7px 20px;
+        }
+
+        .category-bar span {
+            color: #fff;
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .article-header {
+            padding: 40px 0 28px;
+            border-bottom: 1px solid #d4c9b0;
+            margin-bottom: 32px;
+        }
+
+        .article-kicker {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #C8102E;
+            font-weight: 600;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .article-kicker::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #C8102E;
+            opacity: 0.3;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.9rem, 4vw, 2.8rem);
+            line-height: 1.2;
+            color: #0A1628;
+            margin-bottom: 18px;
+            font-weight: 900;
+        }
+
+        .article-deck {
+            font-size: 1.15rem;
+            color: #444;
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 22px;
+            border-left: 3px solid #F5A623;
+            padding-left: 16px;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.78rem;
+            color: #888;
+            flex-wrap: wrap;
+        }
+
+        .article-meta .date { color: #C8102E; font-weight: 600; }
+        .article-meta .separator { color: #ccc; }
+
+        .match-badge {
+            background: #0A1628;
+            color: #fff;
+            border-radius: 6px;
+            padding: 14px 20px;
+            margin: 0 0 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .match-badge .team {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .match-badge .flag { font-size: 1.6rem; }
+
+        .match-badge .vs {
+            color: #F5A623;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .match-badge .match-info {
+            width: 100%;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #B0BEC5;
+            letter-spacing: 1px;
+            margin-top: 6px;
+        }
+
+        .article-body h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            color: #0A1628;
+            margin: 36px 0 14px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #C8102E;
+        }
+
+        .article-body p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: #222;
+        }
+
+        .article-body strong { color: #0A1628; font-weight: 600; }
+        .article-body em { color: #555; }
+
+        .pull-quote {
+            border-left: 4px solid #F5A623;
+            background: #fff8ee;
+            padding: 18px 22px;
+            margin: 28px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .pull-quote p {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #333;
+            margin: 0;
+        }
+
+        .pull-quote cite {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: #888;
+            font-style: normal;
+            letter-spacing: 0.5px;
+        }
+
+        /* Výška tabulka */
+        .height-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 28px 0;
+            font-size: 0.95rem;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+        }
+
+        .height-table thead tr {
+            background: #0A1628;
+            color: #F5A623;
+        }
+
+        .height-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .height-table td {
+            padding: 11px 16px;
+            border-bottom: 1px solid #f0ebe0;
+            color: #222;
+        }
+
+        .height-table tr:last-child td { border-bottom: none; }
+
+        .height-table tr.highlight-czech {
+            background: #fff8ee;
+            font-weight: 600;
+        }
+
+        .height-table tr.highlight-czech td:first-child {
+            border-left: 3px solid #F5A623;
+        }
+
+        .height-table .rank {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #C8102E;
+            font-weight: 700;
+        }
+
+        .height-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .height-bar-fill {
+            height: 8px;
+            border-radius: 4px;
+            background: #C8102E;
+        }
+
+        .height-bar-fill.gold { background: #F5A623; }
+
+        /* Stats row */
+        .stats-row {
+            display: flex;
+            gap: 12px;
+            margin: 28px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            flex: 1;
+            min-width: 120px;
+            background: #0A1628;
+            border-radius: 6px;
+            padding: 14px 16px;
+            text-align: center;
+        }
+
+        .stat-card .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #F5A623;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.7rem;
+            color: #B0BEC5;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        /* Hráči box */
+        .players-box {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px 22px;
+            margin: 24px 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            border-top: 3px solid #C8102E;
+        }
+
+        .players-box .box-label {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #C8102E;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .players-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .player-chip {
+            background: #0A1628;
+            color: #fff;
+            border-radius: 20px;
+            padding: 5px 14px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .player-chip .height-tag {
+            background: #F5A623;
+            color: #0A1628;
+            border-radius: 10px;
+            padding: 1px 7px;
+            font-size: 0.68rem;
+            font-weight: 700;
+        }
+
+        .kickoff-box {
+            background: linear-gradient(135deg, #0A1628, #1E3A5F);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 32px 0;
+            text-align: center;
+            border: 1px solid rgba(245,166,35,0.3);
+        }
+
+        .kickoff-box .kickoff-label {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #F5A623;
+            margin-bottom: 8px;
+        }
+
+        .kickoff-box .kickoff-time {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .kickoff-box .kickoff-details {
+            font-size: 0.82rem;
+            color: #B0BEC5;
+            margin-top: 6px;
+        }
+
+        .source-note {
+            font-size: 0.75rem;
+            color: #aaa;
+            border-top: 1px solid #d4c9b0;
+            padding-top: 16px;
+            margin-top: 32px;
+            font-style: italic;
+        }
+
+        footer {
+            background: #0A1628;
+            color: #B0BEC5;
+            text-align: center;
+            padding: 28px 20px;
+            margin-top: 60px;
+            font-size: 0.78rem;
+        }
+
+        footer .footer-logo {
+            font-family: 'Playfair Display', serif;
+            color: #F5A623;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.7rem; }
+            .stats-row { flex-direction: column; }
+            .match-badge .team { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">⚽ MS 2026 · Skupina A · Živé zpravodajství</div>
+
+<header>
+    <div class="site-name">Fotbal MS 2026</div>
+    <div class="site-tagline">Analýzy · Predikce · Zpravodajství</div>
+</header>
+
+<div class="category-bar">
+    <span>🇨🇿 Česká reprezentace · Taktická analýza</span>
+</div>
+
+<div class="container">
+
+    <div class="article-header">
+        <div class="article-kicker">MS 2026 · Skupina A · Taktika</div>
+        <h1>Hlavní česká zbraň: destruktivní standardky. Korejci se obávají, Krejčí a spol. patří ke špičce</h1>
+        <p class="article-deck">Češi jsou pátým nejvyšším týmem na celém šampionátu. Korea, Mexiko i JAR výrazně zaostávají. Standardní situace mohou být klíčem k postupu ze skupiny.</p>
+        <div class="article-meta">
+            <span class="date">11. června 2026</span>
+            <span class="separator">·</span>
+            <span>Guadalajara, Mexiko</span>
+            <span class="separator">·</span>
+            <span>Zdroj: Sport.cz · Jiří Lizec</span>
+        </div>
+    </div>
+
+    <div class="match-badge">
+        <div class="team"><span class="flag">🇨🇿</span> Česko</div>
+        <div class="vs">vs</div>
+        <div class="team"><span class="flag">🇰🇷</span> Jižní Korea</div>
+        <div class="match-info">📍 Estadio Akron, Zapopan (Guadalajara) · Skupina A · 1. kolo</div>
+    </div>
+
+    <div class="article-body">
+
+        <p>Sami korejští novináři se českých hráčů a trenérů neustále ptají: <em>„Budou vaší taktikou centry a silné standardní situace? U nás je to velké téma."</em> A není divu. Pokud mohou svěřenci trenéra Miroslava Koubka na fotbalovém MS 2026 v něčem předčit ostatní týmy, jsou to právě situace s balonem ve vzduchu.</p>
+
+        <h2>Čtyři góly z baráže, všechny po standardkách</h2>
+
+        <p>Stačí se ohlédnout za březnovou barážovou cestou na šampionát. Češi vstřelili čtyři branky – a všechny po standardních situacích. <em>„Je to naše velká zbraň,"</em> prohlásil tehdy kouč Koubek bez okolků. Ani v poslední přípravě proti Guatemale to nebylo jinak – hlavou se prosadil útočník Tomáš Chorý.</p>
+
+        <div class="pull-quote">
+            <p>„Máme sílu větší v některých atributech, ale teprve na hřišti se ukáže, na co budeme klást důraz. Je jasně nastavená taktika, která by měla platit při všech zápasech."</p>
+            <cite>— Jan Suchopárek, asistent trenéra české reprezentace</cite>
+        </div>
+
+        <p>Kapitán <strong>Ladislav Krejčí</strong> byl podobně tajemný, ale sebevědomý: <em>„Víme, co nás v posledních zápasech zdobilo. Máme jasný cíl a vizi."</em> Brankář <strong>Lukáš Horníček</strong> byl pak vůči asijským novinářům konkrétnější: <em>„Máme na standardky velmi kvalitního trenéra, který vždy najde způsob, jak proniknout obrannou linií soupeře. V týmu je dost vysokých hráčů, což je pro nás velká výhoda."</em></p>
+
+        <h2>Statistika, která mluví za vše</h2>
+
+        <p>Čísla dávají českému optimismu pevný základ. Průměrná výška české reprezentace je <strong>185,7 cm</strong> – to je páté místo mezi všemi 48 účastníky šampionátu. A srovnání se soupeři ve skupině A je ještě výmluvnější.</p>
+
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-value">185,7</div>
+                <div class="stat-label">Průměr Česka (cm)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">5.</div>
+                <div class="stat-label">Místo mezi 48 týmy</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">+6,9</div>
+                <div class="stat-label">cm výhoda vs Korea</div>
+            </div>
+        </div>
+
+        <table class="height-table">
+            <thead>
+                <tr>
+                    <th>Tým</th>
+                    <th>Průměrná výška</th>
+                    <th>Rozdíl vs Česko</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-czech">
+                    <td>🇨🇿 <strong>Česko</strong> <span style="font-size:0.7rem;color:#C8102E;margin-left:6px;">5. na MS</span></td>
+                    <td><div class="height-bar"><div class="height-bar-fill gold" style="width:90px;"></div><strong>185,7 cm</strong></div></td>
+                    <td style="color:#F5A623;font-weight:700;">—</td>
+                </tr>
+                <tr>
+                    <td>🇰🇷 Jižní Korea</td>
+                    <td><div class="height-bar"><div class="height-bar-fill" style="width:72px;"></div>181,9 cm</div></td>
+                    <td style="color:#C8102E;">− 3,8 cm</td>
+                </tr>
+                <tr>
+                    <td>🇲🇽 Mexiko</td>
+                    <td><div class="height-bar"><div class="height-bar-fill" style="width:62px;"></div>179,5 cm</div></td>
+                    <td style="color:#C8102E;">− 6,2 cm</td>
+                </tr>
+                <tr>
+                    <td>🇿🇦 Jižní Afrika</td>
+                    <td><div class="height-bar"><div class="height-bar-fill" style="width:58px;"></div>178,8 cm</div></td>
+                    <td style="color:#C8102E;">− 6,9 cm</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Jihoafričané jsou dokonce po Saúdské Arábii <strong>druhým nejmenším týmem celého mundialu</strong>. Soupeři ve skupině A mohou být rychlejší a pohyblivější, ale jakmile dovolí Česku sypat jeden centr za druhým, mohou se dostat do vážných problémů. A naopak – jejich vlastní útočné standardky nemusí být zdaleka tak účinné.</p>
+
+        <h2>Armáda hlavičkářů</h2>
+
+        <p>Česká sestava disponuje hned několika hráči, kteří jsou ve vzdušných soubojích skutečnou hrozbou. Nejde jen o jednoho specialistu – jde o systémovou výhodu napříč celým týmem.</p>
+
+        <div class="players-box">
+            <div class="box-label">🎯 Čeští hlavičkáři – hrozba ze standardek</div>
+            <div class="players-list">
+                <div class="player-chip">Tomáš Chorý <span class="height-tag">193 cm</span></div>
+                <div class="player-chip">Tomáš Souček <span class="height-tag">192 cm</span></div>
+                <div class="player-chip">Ladislav Krejčí <span class="height-tag">189 cm</span></div>
+                <div class="player-chip">Štěpán Chaloupek <span class="height-tag">188 cm</span></div>
+                <div class="player-chip">Robin Hranáč <span class="height-tag">190 cm</span></div>
+                <div class="player-chip">Patrik Schick <span class="height-tag">186 cm</span></div>
+                <div class="player-chip">David Zima <span class="height-tag">188 cm</span></div>
+            </div>
+        </div>
+
+        <div class="pull-quote">
+            <p>„Máme na standardky velmi kvalitního trenéra, který vždy najde způsob, jak proniknout obrannou linií soupeře a obejít jeho bránění."</p>
+            <cite>— Lukáš Horníček, brankář české reprezentace</cite>
+        </div>
+
+        <h2>Korejci varují sami sebe</h2>
+
+        <p>Že jde o reálnou hrozbu, potvrzuje i zájem korejských médií. Tamní novináři se na téma standardních situací ptají opakovaně a systematicky – je to pro ně <em>„velké téma"</em>. Korejský tým sice disponuje rychlými a technicky vyspělými hráči, ale v soubojích hlavou bude v jasné nevýhodě. Výška 181,9 cm průměrně nestačí na českou zeď.</p>
+
+        <p>Trenér Koubek a jeho realizační tým mají jasno. Standardní situace budou páteří české taktiky – a statistiky i výsledky z baráže naznačují, že to není jen prázdná řeč. Otázkou zůstává, zda Česko dokáže tuto výhodu proměnit v góly i na největší scéně.</p>
+
+        <div class="kickoff-box">
+            <div class="kickoff-label">⏱ Výkop</div>
+            <div class="kickoff-time">04:00 CEST</div>
+            <div class="kickoff-details">Pátek 12. června 2026 · Estadio Akron, Zapopan (Guadalajara) · Skupina A, 1. kolo</div>
+        </div>
+
+        <p class="source-note">Zdroj: Sport.cz, autor Jiří Lizec, 11. 6. 2026. Článek zpracován na základě reportáže z Guadalajary.</p>
+
+    </div>
+</div>
+
+<footer>
+    <div class="footer-logo">Fotbal MS 2026</div>
+    <p>Analýzy a zpravodajství · Zdroj: Sport.cz · FIFA.com</p>
+    <p style="margin-top:6px; opacity:0.5;">© 2026 · Neoficiální zpravodajský portál · Není affiliován s FIFA</p>
+</footer>
+
+</body>
+</html>
