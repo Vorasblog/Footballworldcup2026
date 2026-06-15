@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MS 2026: Výsledky skupin A–F – překvapení i demolice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #f5f0e8; font-family: 'Source Serif 4', Georgia, serif; color: #1a1a1a; line-height: 1.75; }
+        .top-bar { background: #0A1628; color: #F5A623; text-align: center; padding: 8px 20px; font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; }
+        header { background: #0A1628; padding: 28px 20px 24px; text-align: center; border-bottom: 4px solid #C8102E; }
+        .site-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #F5A623; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 4px; }
+        .site-tagline { color: #B0BEC5; font-size: 0.78rem; letter-spacing: 1px; }
+        .category-bar { background: #C8102E; text-align: center; padding: 7px 20px; }
+        .category-bar span { color: #fff; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; }
+        .container { max-width: 740px; margin: 0 auto; padding: 0 20px; }
+        .article-header { padding: 40px 0 28px; border-bottom: 1px solid #d4c9b0; margin-bottom: 32px; }
+        .article-kicker { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: #C8102E; font-weight: 600; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+        .article-kicker::after { content: ''; flex: 1; height: 1px; background: #C8102E; opacity: 0.3; }
+        h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.2; color: #0A1628; margin-bottom: 18px; font-weight: 900; }
+        .article-deck { font-size: 1.15rem; color: #444; line-height: 1.6; font-style: italic; margin-bottom: 22px; border-left: 3px solid #F5A623; padding-left: 16px; }
+        .article-meta { display: flex; align-items: center; gap: 16px; font-size: 0.78rem; color: #888; flex-wrap: wrap; }
+        .article-meta .date { color: #C8102E; font-weight: 600; }
+        .article-meta .separator { color: #ccc; }
+        .article-body h2 { font-family: 'Playfair Display', serif; font-size: 1.45rem; color: #0A1628; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #C8102E; }
+        .article-body p { margin-bottom: 20px; font-size: 1.05rem; color: #222; }
+        .article-body strong { color: #0A1628; font-weight: 600; }
+        .article-body em { color: #555; }
+
+        /* Score card */
+        .score-card {
+            background: #0A1628;
+            border-radius: 8px;
+            padding: 14px 20px;
+            margin: 16px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .score-card .group-tag {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #F5A623;
+            font-weight: 700;
+            min-width: 70px;
+        }
+        .score-card .teams {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: #fff;
+        }
+        .score-card .score {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #F5A623;
+            min-width: 60px;
+            text-align: center;
+        }
+        .score-card .date-venue {
+            font-size: 0.7rem;
+            color: #B0BEC5;
+            min-width: 100px;
+            text-align: right;
+        }
+        .score-card.surprise { border-left: 4px solid #F5A623; }
+        .score-card.demolition { border-left: 4px solid #C8102E; }
+        .score-card.czech { border-left: 4px solid #fff; background: #112240; }
+
+        /* Surprise badge */
+        .surprise-badge {
+            display: inline-block;
+            background: #F5A623;
+            color: #0A1628;
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: 700;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        .demolition-badge {
+            display: inline-block;
+            background: #C8102E;
+            color: #fff;
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: 700;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        /* Pull quote */
+        .pull-quote { border-left: 4px solid #F5A623; background: #fff8ee; padding: 18px 22px; margin: 28px 0; border-radius: 0 6px 6px 0; }
+        .pull-quote p { font-style: italic; font-size: 1.1rem; color: #333; margin: 0; }
+        .pull-quote cite { display: block; margin-top: 8px; font-size: 0.8rem; color: #888; font-style: normal; }
+
+        /* Standings mini table */
+        .standings-box {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            margin: 20px 0 32px;
+        }
+        .standings-box .standings-header {
+            background: #0A1628;
+            padding: 10px 16px;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.9rem;
+            color: #F5A623;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .standings-box table { width: 100%; border-collapse: collapse; }
+        .standings-box th { padding: 8px 12px; font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; color: #888; text-align: left; border-bottom: 1px solid #f0ebe0; }
+        .standings-box td { padding: 9px 12px; font-size: 0.88rem; border-bottom: 1px solid #f0ebe0; }
+        .standings-box tr:last-child td { border-bottom: none; }
+        .standings-box tr.qualify { background: #f0fff4; }
+        .standings-box tr.qualify td:first-child { border-left: 3px solid #2ecc71; }
+        .standings-box tr.czech-row { background: #fff8ee; }
+        .standings-box tr.czech-row td:first-child { border-left: 3px solid #F5A623; }
+        .standings-box .pts { font-weight: 700; color: #0A1628; }
+
+        /* Stats row */
+        .stats-row { display: flex; gap: 12px; margin: 28px 0; flex-wrap: wrap; }
+        .stat-card { flex: 1; min-width: 120px; background: #0A1628; border-radius: 6px; padding: 14px 16px; text-align: center; }
+        .stat-card .stat-value { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #F5A623; font-weight: 700; line-height: 1; }
+        .stat-card .stat-label { font-size: 0.7rem; color: #B0BEC5; letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+        footer { background: #0A1628; color: #B0BEC5; text-align: center; padding: 28px 20px; margin-top: 60px; font-size: 0.78rem; }
+        footer .footer-logo { font-family: 'Playfair Display', serif; color: #F5A623; font-size: 1.1rem; margin-bottom: 8px; }
+        @media (max-width: 600px) { h1 { font-size: 1.7rem; } .score-card { flex-direction: column; align-items: flex-start; } }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">⚽ MS 2026 · Skupinová fáze · 1. kolo · Výsledky</div>
+<header>
+    <div class="site-name">Fotbal MS 2026</div>
+    <div class="site-tagline">Analýzy · Predikce · Zpravodajství</div>
+</header>
+<div class="category-bar">
+    <span>📊 Výsledky · Skupiny A–F · 1. kolo</span>
+</div>
+
+<div class="container">
+    <div class="article-header">
+        <div class="article-kicker">MS 2026 · Skupinová fáze · Přehled výsledků</div>
+        <h1>Brazílie remizuje, Německo demoluje. Přehled prvního kola skupin A–F</h1>
+        <p class="article-deck">Šampionát nabídl hned v prvních dnech drama i překvapení. Brazílie neporazila Maroko, Japonsko senzačně remizovalo s Nizozemskem, Skotsko porazilo Haiti. A Česko? Prohrálo s Koreou 1:2 po dramatickém závěru.</p>
+        <div class="article-meta">
+            <span class="date">15. června 2026</span>
+            <span class="separator">·</span>
+            <span>Přehled 1. kola skupin A–F</span>
+            <span class="separator">·</span>
+            <span>Zdroj: FIFA, Fox Sports, iDNES</span>
+        </div>
+    </div>
+
+    <div class="article-body">
+
+        <div class="stats-row">
+            <div class="stat-card"><div class="stat-value">12</div><div class="stat-label">Odehraných zápasů</div></div>
+            <div class="stat-card"><div class="stat-value">5</div><div class="stat-label">Remíz v 1. kole</div></div>
+            <div class="stat-card"><div class="stat-value">7:1</div><div class="stat-label">Největší výhra (GER)</div></div>
+            <div class="stat-card"><div class="stat-value">4</div><div class="stat-label">Góly USA vs Paraguay</div></div>
+        </div>
+
+        <h2>Skupina A – Korea šokuje Česko, Mexiko v pohodě</h2>
+
+        <p>Zahajovací zápas turnaje přinesl přesně to, co se od hostitelského Mexika čekalo – pohodlné vítězství. <strong>Mexiko porazilo Jižní Afriku 2:0</strong> góly Quiñonese a Jiméneze. Aztéka hřměla, domácí fanoušci slavili. Nic dramatického, ale splněný úkol.</p>
+
+        <div class="score-card">
+            <span class="group-tag">Skupina A</span>
+            <span class="teams">🇲🇽 Mexiko</span>
+            <span class="score">2 : 0</span>
+            <span class="teams">🇿🇦 Jižní Afrika</span>
+            <span class="date-venue">11. 6. · Aztéka</span>
+        </div>
+
+        <p>Druhý zápas skupiny A byl pro české fanoušky bolestivý. <strong>Česko prohrálo s Jižní Koreou 1:2</strong> po dramatickém závěru. Krejčí sice v 59. minutě vyrovnal na 1:1, ale Korea odpověděla dvěma góly – Hwang In-beom v 67. minutě a Oh Hyeon-gyu v 80. minutě rozhodl. Česko tak startuje bez bodu a potřebuje zabrat v dalších dvou zápasech.</p>
+
+        <div class="score-card czech">
+            <span class="group-tag">Skupina A</span>
+            <span class="teams">🇰🇷 Jižní Korea</span>
+            <span class="score">2 : 1</span>
+            <span class="teams">🇨🇿 Česko</span>
+            <span class="date-venue">12. 6. · Akron</span>
+        </div>
+
+        <div class="standings-box">
+            <div class="standings-header">Tabulka Skupiny A</div>
+            <table>
+                <tr><th>Tým</th><th>Z</th><th>V</th><th>R</th><th>P</th><th>Skóre</th><th>Body</th></tr>
+                <tr class="qualify"><td>🇲🇽 Mexiko</td><td>1</td><td>1</td><td>0</td><td>0</td><td>2:0</td><td class="pts">3</td></tr>
+                <tr class="qualify"><td>🇰🇷 Jižní Korea</td><td>1</td><td>1</td><td>0</td><td>0</td><td>2:1</td><td class="pts">3</td></tr>
+                <tr class="czech-row"><td>🇨🇿 Česko</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1:2</td><td class="pts">0</td></tr>
+                <tr><td>🇿🇦 Jižní Afrika</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0:2</td><td class="pts">0</td></tr>
+            </table>
+        </div>
+
+        <h2>Skupina B – čtyři remízy, nikdo nevyhrál</h2>
+
+        <p>Skupina B přinesla kuriózní situaci – oba zápasy skončily remízou a všechny čtyři týmy mají po jednom bodu. <strong>Kanada remizovala s Bosnou a Hercegovinou 1:1</strong>, když Larin vyrovnal v 78. minutě po Lukičově gólu. <strong>Katar pak překvapivě remizoval se Švýcarskem 1:1</strong> – to byl výsledek, který málokdo čekal. Skupina je zcela otevřená.</p>
+
+        <div class="score-card surprise">
+            <span class="group-tag">Skupina B</span>
+            <span class="teams">🇨🇦 Kanada</span>
+            <span class="score">1 : 1</span>
+            <span class="teams">🇧🇦 Bosna</span>
+            <span class="date-venue">12. 6. · BMO Field</span>
+        </div>
+        <div class="score-card surprise">
+            <span class="group-tag">Skupina B</span>
+            <span class="teams">🇶🇦 Katar</span>
+            <span class="score">1 : 1</span>
+            <span class="teams">🇨🇭 Švýcarsko <span class="surprise-badge">Překvapení</span></span>
+            <span class="date-venue">13. 6. · Levi's</span>
+        </div>
+
+        <h2>Skupina C – Brazílie neporazila Maroko, Skotsko slaví</h2>
+
+        <p>Největší senzace prvního kola přišla ze skupiny C. <strong>Brazílie remizovala s Maroko 1:1</strong> – pětinásobný mistr světa nedokázal porazit africký tým, který na MS 2022 došel do semifinále. Brazílie tak ztrácí na vedoucí Skotsko, které překvapivě porazilo Haiti 1:0.</p>
+
+        <div class="score-card surprise">
+            <span class="group-tag">Skupina C</span>
+            <span class="teams">🇧🇷 Brazílie <span class="surprise-badge">Remíza!</span></span>
+            <span class="score">1 : 1</span>
+            <span class="teams">🇲🇦 Maroko</span>
+            <span class="date-venue">13. 6. · MetLife</span>
+        </div>
+        <div class="score-card">
+            <span class="group-tag">Skupina C</span>
+            <span class="teams">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Skotsko</span>
+            <span class="score">1 : 0</span>
+            <span class="teams">🇭🇹 Haiti</span>
+            <span class="date-venue">13. 6. · Gillette</span>
+        </div>
+
+        <div class="pull-quote">
+            <p>Brazílie remizovala s Maroko – pětinásobný mistr světa nedokázal porazit africký tým. Skotsko mezitím vede skupinu C s plným počtem bodů.</p>
+            <cite>— Největší překvapení prvního kola skupin A–F</cite>
+        </div>
+
+        <h2>Skupina D – USA válí, Austrálie překvapuje</h2>
+
+        <p>Domácí USA předvedli na úvod výstavní výkon. <strong>USA porazily Paraguay 4:1</strong> – Balogun vstřelil dvě branky a Reyna přidal gól v nastavení. Domácí publikum v SoFi Stadium v Los Angeles šílelo. Druhý zápas skupiny přinesl další překvapení – <strong>Austrálie porazila Turecko 2:0</strong> a také startuje s plným počtem bodů.</p>
+
+        <div class="score-card demolition">
+            <span class="group-tag">Skupina D</span>
+            <span class="teams">🇺🇸 USA <span class="demolition-badge">Dominance</span></span>
+            <span class="score">4 : 1</span>
+            <span class="teams">🇵🇾 Paraguay</span>
+            <span class="date-venue">12. 6. · SoFi</span>
+        </div>
+        <div class="score-card surprise">
+            <span class="group-tag">Skupina D</span>
+            <span class="teams">🇦🇺 Austrálie <span class="surprise-badge">Překvapení</span></span>
+            <span class="score">2 : 0</span>
+            <span class="teams">🇹🇷 Turecko</span>
+            <span class="date-venue">13. 6. · BC Place</span>
+        </div>
+
+        <h2>Skupina E – Německo demoluje Curaçao 7:1</h2>
+
+        <p>Nejjednoznačnější výsledek celého prvního kola přišel ze skupiny E. <strong>Německo rozdrtilo Curaçao 7:1</strong> – Musiala, Nmecha, Schlotterbeck a spol. předvedli fotbalovou lekci. Druhý zápas skupiny přinesl překvapení – <strong>Pobřeží slonoviny porazilo Ekvádor 1:0</strong> gólem Dialla v 90. minutě. Skupina E tak má dva vítěze a dva poražené.</p>
+
+        <div class="score-card demolition">
+            <span class="group-tag">Skupina E</span>
+            <span class="teams">🇩🇪 Německo <span class="demolition-badge">7 gólů!</span></span>
+            <span class="score">7 : 1</span>
+            <span class="teams">🇨🇼 Curaçao</span>
+            <span class="date-venue">14. 6. · NRG</span>
+        </div>
+        <div class="score-card">
+            <span class="group-tag">Skupina E</span>
+            <span class="teams">🇨🇮 Pobřeží slonoviny</span>
+            <span class="score">1 : 0</span>
+            <span class="teams">🇪🇨 Ekvádor</span>
+            <span class="date-venue">14. 6. · Lincoln</span>
+        </div>
+
+        <h2>Skupina F – Japonsko remizuje s Nizozemskem, Švédsko válí</h2>
+
+        <p>Skupina F přinesla senzační remízu. <strong>Japonsko remizovalo s Nizozemskem 2:2</strong> – asijský tým, který na MS 2022 vyřadil Německo, opět ukázal, že patří ke světové špičce. Gravenberch asistoval dvakrát pro Nizozemsko, ale Japonci dvakrát vyrovnali. Ve druhém zápase skupiny <strong>Švédsko porazilo Tunisko 5:1</strong> – Ayari vstřelil dva góly a Isak asistoval dvakrát.</p>
+
+        <div class="score-card surprise">
+            <span class="group-tag">Skupina F</span>
+            <span class="teams">🇳🇱 Nizozemsko <span class="surprise-badge">Remíza!</span></span>
+            <span class="score">2 : 2</span>
+            <span class="teams">🇯🇵 Japonsko</span>
+            <span class="date-venue">14. 6. · AT&T</span>
+        </div>
+        <div class="score-card demolition">
+            <span class="group-tag">Skupina F</span>
+            <span class="teams">🇸🇪 Švédsko <span class="demolition-badge">5 gólů!</span></span>
+            <span class="score">5 : 1</span>
+            <span class="teams">🇹🇳 Tunisko</span>
+            <span class="date-venue">14. 6. · AT&T</span>
+        </div>
+
+        <h2>Co nás čeká dál?</h2>
+
+        <p>Dnes (15. června) hrají skupiny G a H – na programu jsou zápasy Španělsko vs Kapverdy, Belgie vs Egypt, Saúdská Arábie vs Uruguay a Írán vs Nový Zéland. Zítra pak nastoupí Francie, Argentina a Portugalsko. Pro Česko je klíčový zápas <strong>18. června v Atlante proti Jižní Africe</strong> – bez výhry bude postup ze skupiny velmi komplikovaný.</p>
+
+    </div>
+</div>
+
+<footer>
+    <div class="footer-logo">Fotbal MS 2026</div>
+    <p>Zdroje: FIFA.com · Fox Sports · iDNES.cz · WorldCupTracker · Sofascore</p>
+    <p style="margin-top:6px; opacity:0.5;">© 2026 · Neoficiální zpravodajský portál · Není affiliován s FIFA</p>
+</footer>
+
+</body>
+</html>
