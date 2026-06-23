@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="cs">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Estadio Azteca – chrám světového fotbalu</title>
+<meta content="Estadio Azteca – chrám světového fotbalu" property="og:title"/>
+<meta content="Jediný stadion se třemi MS. Pelé 1970, Maradona 1986, Gól století. Česko zde hraje poslední skupinový zápas ve 2 240 m n.m." property="og:description"/>
+<meta content="https://2.bp.blogspot.com/-GtEXq42fr4k/UAgE8U-ZaDI/AAAAAAAABPw/W2w3gwCIK0k/s1600/az.jpg" property="og:image"/>
+<meta content="article" property="og:type"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=Source+Serif+4:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #f5f0e8; font-family: 'Source Serif 4', Georgia, serif; color: #1a1a1a; line-height: 1.75; }
+        .top-bar { background: #0A1628; color: #F5A623; text-align: center; padding: 8px 20px; font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; }
+        header { background: #0A1628; padding: 28px 20px 24px; text-align: center; border-bottom: 4px solid #C8102E; }
+        .site-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #F5A623; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 4px; }
+        .site-tagline { color: #B0BEC5; font-size: 0.78rem; letter-spacing: 1px; }
+        .category-bar { background: #C8102E; text-align: center; padding: 7px 20px; }
+        .category-bar span { color: #fff; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; }
+        .container { max-width: 740px; margin: 0 auto; padding: 0 20px; }
+        .article-header { padding: 40px 0 28px; border-bottom: 1px solid #d4c9b0; margin-bottom: 32px; }
+        .article-kicker { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: #C8102E; font-weight: 600; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+        .article-kicker::after { content: ''; flex: 1; height: 1px; background: #C8102E; opacity: 0.3; }
+        h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.2; color: #0A1628; margin-bottom: 18px; font-weight: 900; }
+        .article-deck { font-size: 1.15rem; color: #444; line-height: 1.6; font-style: italic; margin-bottom: 22px; border-left: 3px solid #F5A623; padding-left: 16px; }
+        .article-meta { display: flex; align-items: center; gap: 16px; font-size: 0.78rem; color: #888; flex-wrap: wrap; }
+        .article-meta .date { color: #C8102E; font-weight: 600; }
+        .article-meta .separator { color: #ccc; }
+        .hero-image { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; margin-bottom: 32px; display: block; }
+        .article-body h2 { font-family: 'Playfair Display', serif; font-size: 1.45rem; color: #0A1628; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #C8102E; }
+        .article-body p { margin-bottom: 20px; font-size: 1.05rem; color: #222; }
+        .article-body strong { color: #0A1628; font-weight: 600; }
+        .article-body em { color: #555; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0; }
+        .stat-card { background: #0A1628; border-radius: 6px; padding: 16px 14px; text-align: center; }
+        .stat-card .stat-value { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #F5A623; font-weight: 700; line-height: 1; }
+        .stat-card .stat-label { font-size: 0.68rem; color: #B0BEC5; letter-spacing: 1px; text-transform: uppercase; margin-top: 5px; line-height: 1.3; }
+        .pull-quote { border-left: 4px solid #F5A623; background: #fff8ee; padding: 18px 22px; margin: 28px 0; border-radius: 0 6px 6px 0; }
+        .pull-quote p { font-style: italic; font-size: 1.1rem; color: #333; margin: 0; }
+        .pull-quote cite { display: block; margin-top: 8px; font-size: 0.8rem; color: #888; font-style: normal; }
+        .timeline-box { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin: 24px 0; }
+        .timeline-header { background: #0A1628; padding: 12px 18px; font-family: 'Playfair Display', serif; font-size: 1rem; color: #F5A623; font-weight: 700; }
+        .timeline-row { display: flex; gap: 16px; padding: 14px 18px; border-bottom: 1px solid #f0ebe0; align-items: flex-start; }
+        .timeline-row:last-child { border-bottom: none; }
+        .timeline-year { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #C8102E; font-weight: 700; min-width: 50px; flex-shrink: 0; }
+        .timeline-content { font-size: 0.92rem; color: #333; line-height: 1.5; }
+        .timeline-content strong { color: #0A1628; }
+        .fact-highlight { background: #C8102E; color: #fff; border-radius: 8px; padding: 16px 20px; margin: 20px 0; display: flex; align-items: center; gap: 14px; }
+        .fact-highlight .fact-icon { font-size: 1.8rem; flex-shrink: 0; }
+        .fact-highlight .fact-text { font-size: 0.95rem; line-height: 1.5; }
+        .fact-highlight .fact-text strong { color: #F5A623; }
+        .feature-box { background: #fff; border-radius: 8px; padding: 20px 22px; margin: 24px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.07); border-left: 4px solid #F5A623; }
+        .feature-box .feature-label { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #F5A623; font-weight: 700; margin-bottom: 10px; }
+        .feature-box p { margin: 0; font-size: 0.95rem; color: #333; line-height: 1.6; }
+        .match-box { background: linear-gradient(135deg, #0A1628, #1E3A5F); border-radius: 8px; padding: 20px 24px; margin: 32px 0; text-align: center; border: 1px solid rgba(245,166,35,0.3); }
+        .match-box .match-label { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: #F5A623; margin-bottom: 10px; }
+        .match-box .match-teams { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #fff; font-weight: 700; }
+        .match-box .match-details { font-size: 0.82rem; color: #B0BEC5; margin-top: 8px; }
+        footer { background: #0A1628; color: #B0BEC5; text-align: center; padding: 28px 20px; margin-top: 60px; font-size: 0.78rem; }
+        footer .footer-logo { font-family: 'Playfair Display', serif; color: #F5A623; font-size: 1.1rem; margin-bottom: 8px; }
+        @media (max-width: 600px) { h1 { font-size: 1.7rem; } .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    </style>
+</head>
+<body>
+<div class="top-bar">⚽ MS 2026 · Stadiony · Mexico City</div>
+<header>
+<div class="site-name">Fotbal MS 2026</div>
+<div class="site-tagline">Analýzy · Predikce · Zpravodajství</div>
+</header>
+<div class="category-bar">
+<span>🏟️ Stadiony MS 2026 · Estadio Azteca · Mexico City</span>
+</div>
+<div class="container">
+<div class="article-header">
+<div class="article-kicker">MS 2026 · Stadiony · Mexico City, 2 240 m n.m.</div>
+<h1>Estadio Azteca: chrám světového fotbalu, kde Pelé i Maradona psali historii</h1>
+<p class="article-deck">Jediný stadion na světě, který hostí třetí mistrovství světa. Dvě finále, Gól století, rekordní návštěvnost 114 580 diváků. A teď i zápas Česko vs. Mexiko ve 2 240 metrech nad mořem.</p>
+<div class="article-meta">
+<span class="date">23. června 2026</span>
+<span class="separator">·</span>
+<span>Mexico City, Mexiko</span>
+<span class="separator">·</span>
+<span>Zdroje: FIFA, beIN Sports, WorldCupper, Wikiwand</span>
+</div>
+</div>
+<img alt="Estadio Azteca aerial view Mexico City" class="hero-image" src="https://2.bp.blogspot.com/-GtEXq42fr4k/UAgE8U-ZaDI/AAAAAAAABPw/W2w3gwCIK0k/s1600/az.jpg"/>
+<div class="article-body">
+<p>Když česká reprezentace vstoupí 25. června na trávník Estadio Azteca, ocitne se na místě, které je pro světový fotbal tím, čím je Koloseum pro Řím. Žádný jiný stadion na světě neviděl tolik historických momentů, tolik legend a tolik emocí. A nyní přidá další kapitolu – třetí mistrovství světa.</p>
+<div class="stats-grid">
+<div class="stat-card">
+<div class="stat-value">1966</div>
+<div class="stat-label">Rok otevření</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">72 766</div>
+<div class="stat-label">Kapacita MS 2026</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">2 240 m</div>
+<div class="stat-label">Nadm. výška</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">3.</div>
+<div class="stat-label">MS na Aztéce</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">114 580</div>
+<div class="stat-label">Rekord návštěvnosti</div>
+</div>
+<div class="stat-card">
+<div class="stat-value">6</div>
+<div class="stat-label">Zápasů MS 2026</div>
+</div>
+</div>
+<h2>Zrození legendy – od návrhu po inauguraci</h2>
+<p>Estadio Azteca byl navržen mexickými architekty <strong>Pedrem Ramírezem Vázquezem a Rafaelem Mijaresem Alcérreca</strong> a otevřen v roce 1966 – speciálně pro mistrovství světa 1970. Stavba trvala čtyři roky a stála tehdy přibližně 250 milionů mexických pesos. Stadion byl od počátku koncipován jako víceúčelová aréna schopná pojmout přes 100 000 diváků.</p>
+<p>Název „Azteca" odkazuje na původní obyvatele mexické vysočiny – Aztéky, jejichž civilizace vzkvétala právě v oblasti dnešního Mexico City. Stadion leží ve čtvrti Coyoacán, přibližně 14 kilometrů jižně od centra města, ve výšce 2 240 metrů nad mořem.</p>
+<div class="fact-highlight">
+<span class="fact-icon">🏆</span>
+<div class="fact-text">Estadio Azteca je <strong>jediným stadionem v historii, který hostí tři různá mistrovství světa</strong> (1970, 1986, 2026) a zároveň jako jediný hostí tři zahajovací zápasy MS. Žádný jiný stadion se tomuto rekordu nepřiblíží.</div>
+</div>
+<h2>1970 – Pelé a brazilský triumf</h2>
+<p>První mistrovství světa na Aztéce přineslo jeden z nejkrásnějších turnajů v historii. Finále 21. června 1970 sledovalo <strong>107 412 diváků</strong> – Brazílie porazila Itálii 4:1 a <strong>Pelé</strong> vstřelil první gól. Brazilci předvedli fotbal, který byl označen za nejkrásnější v dějinách šampionátu. Pelé, Jairzinho, Rivelino, Tostão – jména, která jsou navždy spojena s Aztékou.</p>
+<h2>1986 – Maradona a Gól století</h2>
+<p>Druhé MS na Aztéce přineslo možná největší moment v historii fotbalu. <strong>22. června 1986</strong> se na trávníku Aztéky odehrál čtvrtfinálový zápas Argentina vs. Anglie. Diego Maradona vstřelil dva góly – první rukou (slavná „Ruka Boží"), druhý po sólovém průniku přes pět anglických hráčů, který byl později zvolen <strong>Gólem století</strong>.</p>
+<div class="pull-quote">
+<p>„Génius! Génius! Génius! Pořád jde... Gól! Promiňte, chci plakat! Bože můj! Ať žije fotbal! Jaký gól! Kosmický drak, z jaké planety jsi přiletěl?"</p>
+<cite>— Victor Hugo Morales, komentátor argentinského rádia, při Gólu století (22. 6. 1986)</cite>
+</div>
+<p>Finále MS 1986 pak Aztéka hostila 29. června – Argentina porazila Západní Německo 3:2 a Maradona získal Zlatý míč. Před stadionem dnes stojí <strong>socha Maradony střílející Gól století</strong> – trvalá připomínka toho nejmagičtějšího okamžiku.</p>
+<div class="feature-box">
+<div class="feature-label">📊 Rekord návštěvnosti</div>
+<p>Největší návštěvnost v historii Aztéky: <strong>114 580 diváků</strong> při čtvrtfinále MS 1986 Argentina vs. Anglie – zápas, ve kterém Maradona vstřelil Gól století. Jde o jeden z nejvyšších počtů diváků v historii fotbalu vůbec.</p>
+</div>
+<h2>Historická osa – klíčové momenty Aztéky</h2>
+<div class="timeline-box">
+<div class="timeline-header">📅 Klíčové momenty Estadio Azteca</div>
+<div class="timeline-row">
+<span class="timeline-year">1966</span>
+<div class="timeline-content">Otevření stadionu. Architekti Ramírez Vázquez a Mijares. Kapacita přes 100 000 diváků.</div>
+</div>
+<div class="timeline-row">
+<span class="timeline-year">1970</span>
+<div class="timeline-content"><strong>MS 1970 – finále:</strong> Brazílie 4:1 Itálie. Pelé vstřelil první gól. 107 412 diváků. Nejkrásnější turnaj v historii.</div>
+</div>
+<div class="timeline-row">
+<span class="timeline-year">1986</span>
+<div class="timeline-content"><strong>MS 1986 – Gól století:</strong> Maradona vs. Anglie (22. 6.). Rekord 114 580 diváků. Finále: Argentina 3:2 Německo.</div>
+</div>
+<div class="timeline-row">
+<span class="timeline-year">1993</span>
+<div class="timeline-content">Přejmenování na „Estadio Guillermo Cañedo" – název se ale neujal, veřejnost ho stále nazývá Aztéka.</div>
+</div>
+<div class="timeline-row">
+<span class="timeline-year">2022–25</span>
+<div class="timeline-content">Rozsáhlá rekonstrukce za stovky milionů dolarů – modernizace zázemí, sedaček a technologií před MS 2026.</div>
+</div>
+<div class="timeline-row">
+<span class="timeline-year">2026</span>
+<div class="timeline-content"><strong>MS 2026 – třetí šampionát:</strong> 6 zápasů včetně zahajovacího (Mexiko vs. JAR, 11. 6.) a zápasu Česko vs. Mexiko (25. 6.).</div>
+</div>
+</div>
+<h2>Domov Club América, Cruz Azul a mexické reprezentace</h2>
+<p>Aztéka není jen dějištěm světových šampionátů – je každodenním domovem mexického fotbalu. Hrají zde <strong>Club América</strong> a <strong>Cruz Azul</strong> z nejvyšší mexické ligy Liga MX, a samozřejmě <strong>mexická národní reprezentace</strong>. Stadion byl také dějištěm finále U-17 MS 2011, kde rekordních <strong>98 943 diváků</strong> sledovalo zápas Uruguaye a Francie.</p>
+<p>Po rekonstrukci v letech 2022–2025 stadion získal modernizované zázemí, nové sedačky a technologické vybavení. Kapacita pro MS 2026 je stanovena na <strong>72 766 diváků</strong> – o něco méně než historické maximum, ale stále jedna z největších arén turnaje.</p>
+<h2>Česko na Aztéce – historický okamžik</h2>
+<p>Pro českou reprezentaci bude zápas na Aztéce historickým okamžikem. Poprvé v historii nastoupí čeští fotbalisté na stadionu, kde Pelé slavil titul a Maradona vstřelil Gól století. Výzva bude obrovská – 2 240 metrů nadmořské výšky, domácí publikum fandící Mexiku a noční výkop ve 03:00 CEST. Ale právě proto jsou taková utkání nezapomenutelná.</p>
+<div class="match-box">
+<div class="match-label">⚽ Zápas na tomto stadionu</div>
+<div class="match-teams">🇨🇿 Česko vs. 🇲🇽 Mexiko</div>
+<div class="match-details">Středa 25. června 2026 · 03:00 CEST · Skupina A, 3. kolo · Estadio Azteca, Mexico City · 2 240 m n.m.</div>
+</div>
+</div>
+</div>
+<footer>
+<div class="footer-logo">Fotbal MS 2026</div>
+<p>Zdroje: FIFA.com · beIN Sports · WorldCupper · Wikiwand · Estadio Azteca</p>
+<p style="margin-top:6px; opacity:0.5;">© 2026 · Neoficiální zpravodajský portál · Není affiliován s FIFA</p>
+</footer>
+</body>
+</html>
